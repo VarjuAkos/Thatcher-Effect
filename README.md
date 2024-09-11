@@ -13,17 +13,17 @@ When viewed upside down, the face might appear relatively normal. However, when 
 
 When viewed upside down, the face might appear relatively normal. 
 
-<div style="display: flex; flex-direction: row;">
-  <img src="./demo/original_flipped.png" alt="thatcherized" style="width: 45%; margin-right: 5%;" />
-  <img src="./demo/thatcherized.png" alt="thatcherized" style="width: 45%;" />
-</div>
+original_flipped          |  thatcherized
+:-------------------------:|:-------------------------:
+![](./demo/original_flipped.png)  |  ![](./demo/thatcherized.png)
 
 However, when the image is rotated to its upright position, the distortions become strikingly apparent.
 
-<div style="display: flex; flex-direction: row;">
-  <img src="./demo/original.png" alt="thatcherized" style="width: 45%; margin-right: 5%;" />
-  <img src="./demo/thatcherized_flipped.png" alt="thatcherized" style="width: 45%;" />
-</div>
+original         |  thatcherized_flipped
+:-------------------------:|:-------------------------:
+![](./demo/original.png)  |  ![](./demo/thatcherized_flipped.png)
+
+
 
 
 
