@@ -42,9 +42,12 @@ def segment_feature(image, sam_predictor):
     return segmented_image, mask
 
 def segment_face(image_path, output_folder, sam_checkpoint):
-    det_net = init_detection_model('retinaface_resnet50', half=False)
+    det_net = init_detection_model('retinaface_resnet50', half=False, device='cpu')
     
     sam = sam_model_registry["vit_h"](checkpoint=sam_checkpoint)
+    checkpoint = torch.load(sam_checkpoint, weights_only=True)
+    sam.load_state_dict(checkpoint)
+    sam.to(device='cpu')
     sam_predictor = SamPredictor(sam)
     
     img_ori = cv2.imread(image_path)
@@ -158,13 +161,13 @@ def apply_thatcher_effect(image_path, segmentation_folder, output_folder):
     print(f"Thatcher effect applied. Result saved in {output_folder}")
 
 def main():
-    image_path = "original.png"
+    image_path = "Face.jpg"
     output_folder = "output/"
-    sam_checkpoint = "../segment-anything/checkpoint/sam_vit_h_4b8939.pth"
+    sam_checkpoint = "sam_vit_h_4b8939.pth"
     segmentation_folder = "segmentation/"
     
     try:
-        #segment_face(image_path, segmentation_folder, sam_checkpoint)
+        segment_face(image_path, segmentation_folder, sam_checkpoint)
         print("Segmentation complete.")
     except Exception as e:
         print(f"An error occurred during segmentation: {str(e)}")
